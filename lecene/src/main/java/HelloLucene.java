@@ -1,3 +1,4 @@
+import org.apache.logging.log4j.spi.LoggerContextFactory;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -22,9 +23,16 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-
+/**
+ * Created by LY on 2017/9/25.
+ *
+ * lucene是一个基于java的全文信息检索工具 采用的是反向检索机制
+ */
 public class HelloLucene {
+    private static final Logger log = LoggerFactory.getLogger(HelloLucene.class);//使用slf4j是一个用于日志系统的简单Facade，允许最终用户在部署其应用时使用其所希望的日志系统。
     public static final String INDEX_PATH = "resources/patternIndex";
     private Directory dir = null;
     private IndexReader reader;
@@ -43,6 +51,8 @@ public class HelloLucene {
         try {
             this.dir = FSDirectory.open(Paths.get(INDEX_PATH));
             if (dirEmpty()) {  //索引文件不能重复建立！
+               // log.info("您好！");
+                //System.out.println("您好！");
                 System.out.println("索引构建开始");
                 indexer();
                 System.out.println("索引构建完毕");
@@ -111,5 +121,6 @@ public class HelloLucene {
         long endTime = System.currentTimeMillis();
         long time =endTime - startTime;
         System.out.println("消耗时间" + time);
+        //log.info("你好！");//目前没有输出源可以找到，故log暂时使用不了
     }
 }
