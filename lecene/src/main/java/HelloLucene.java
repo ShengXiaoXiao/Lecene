@@ -53,10 +53,8 @@ public class HelloLucene {
             if (dirEmpty()) {  //索引文件不能重复建立！
                // log.info("您好！");
                 System.out.println("您好！");
-                System.out.println("您好！");
-                System.out.println("您好！");
-                System.out.println("您好！");
-                System.out.println("您好！");
+                System.out.println("不谢！");
+                System.out.println("不谢！");
                 System.out.println("索引构建开始");
                 indexer();
                 System.out.println("索引构建完毕");
